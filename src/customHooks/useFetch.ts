@@ -6,6 +6,7 @@ import { useState } from "react";
 interface ImageWithData {
   name: string;
   barcode: string;
+  image: string;
 }
 
 const URL = process.env.REACT_APP_SERVER_URL;

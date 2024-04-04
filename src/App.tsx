@@ -1,16 +1,8 @@
-import { useState } from "react";
 import "./App.css";
-import axios from "axios";
-import { Button, Card, Flex, Input, message } from "antd";
-import { FileImageOutlined, BarcodeOutlined } from "@ant-design/icons";
+import { Button, Card, Flex, Input } from "antd";
+import { BarcodeOutlined } from "@ant-design/icons";
 import { SearchProps } from "antd/es/input/Search";
-import { NoticeType } from "antd/es/message/interface";
 import useFetch from "./customHooks/useFetch";
-
-interface ImageWithData {
-  name: string;
-  barcode: string;
-}
 
 const { Search } = Input;
 
@@ -115,7 +107,10 @@ function App() {
                           borderRadius: "50%",
                         }}
                       >
-                        <FileImageOutlined style={{ fontSize: 50 }} />
+                        <img
+                          style={{ width: 100, height: 100 }}
+                          src={`data:image/jpeg;base64,${image.image}`}
+                        />
                       </div>
                     </Flex>
                     <Flex
