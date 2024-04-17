@@ -3,7 +3,7 @@ import { NoticeType } from "antd/es/message/interface";
 import axios from "axios";
 import { useState } from "react";
 
-interface ImageWithData {
+export interface ImageWithData {
   name: string;
   barcode: string;
   image: string;
@@ -14,9 +14,6 @@ const URL = process.env.REACT_APP_SERVER_URL;
 const useFetch = () => {
   const [files, setFiles] = useState<any>();
   const [imagesWithData, setImagesWithData] = useState<ImageWithData[]>([]);
-  const [originalImagesWithData, setOriginalImagesWithData] = useState<
-    ImageWithData[]
-  >([]);
 
   const [messageApi, contextHolder] = message.useMessage();
 
@@ -41,8 +38,6 @@ const useFetch = () => {
       .post(`${URL}/extract`, formData)
       .then((response) => {
         setImagesWithData(response.data.data);
-        setOriginalImagesWithData(response.data.data);
-
         setFiles([]);
 
         const customMessage = `${response.data.data.length} images were uploaded successfully`;
@@ -58,11 +53,8 @@ const useFetch = () => {
   };
 
   return {
-    files,
     imagesWithData,
-    originalImagesWithData,
     contextHolder,
-    setImagesWithData,
     setFiles,
     handleClick,
   };
