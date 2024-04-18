@@ -4,13 +4,13 @@ import { ImageWithData } from "../customHooks/useFetch";
 import React from "react";
 
 interface ICustomCard {
-  index: number;
+  
   image: ImageWithData;
 }
 
-export const CustomCard: React.FC<ICustomCard> = ({ index, image }) => {
+export const CustomCard: React.FC<ICustomCard> = ({ image }) => {
   return (
-    <Card key={index}>
+    <Card>
       <Flex
         vertical
         style={{

@@ -47,7 +47,7 @@ function App() {
               style={{ margin: 20 }}
             >
               {imagesWithData.map((image, index) => (
-                <CustomCard index={index} image={image} />
+                <CustomCard key={index} image={image} />
               ))}
             </Flex>
           </Flex>

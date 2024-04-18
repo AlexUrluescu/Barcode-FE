@@ -9,7 +9,8 @@ export interface ImageWithData {
   image: string;
 }
 
-const URL = process.env.REACT_APP_SERVER_URL;
+// const URL = process.env.REACT_APP_SERVER_URL;
+const URL = 'http://127.0.0.1:5000';
 
 const useFetch = () => {
   const [files, setFiles] = useState<any>();
