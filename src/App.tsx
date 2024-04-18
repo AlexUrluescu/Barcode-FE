@@ -1,10 +1,11 @@
 import "./App.css";
-import { Button, Flex } from "antd";
+import { Button, Flex, Spin } from "antd";
 import useFetch from "./customHooks/useFetch";
 import { CustomCard } from "./components/Card";
 
 function App() {
-  const { imagesWithData, contextHolder, setFiles, handleClick } = useFetch();
+  const { imagesWithData, contextHolder, isLoading, setFiles, handleClick } =
+    useFetch();
 
   return (
     <div className="App">
@@ -38,6 +39,7 @@ function App() {
               Upload Files
             </Button>
           </Flex>
+          {isLoading ? <Spin size="large" /> : null}
 
           <Flex vertical gap={25}>
             <Flex

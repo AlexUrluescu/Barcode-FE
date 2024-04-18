@@ -9,12 +9,12 @@ export interface ImageWithData {
   image: string;
 }
 
-// const URL = process.env.REACT_APP_SERVER_URL;
-const URL = 'http://127.0.0.1:5000';
+const URL = "http://127.0.0.1:5000";
 
 const useFetch = () => {
   const [files, setFiles] = useState<any>();
   const [imagesWithData, setImagesWithData] = useState<ImageWithData[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const [messageApi, contextHolder] = message.useMessage();
 
@@ -26,6 +26,7 @@ const useFetch = () => {
   };
 
   const handleClick = () => {
+    setIsLoading(true);
     if (files === undefined) {
       return;
     }
@@ -44,7 +45,9 @@ const useFetch = () => {
         const customMessage = `${response.data.data.length} images were uploaded successfully`;
 
         success("success", customMessage);
+        setIsLoading(false);
       })
+
       .catch((error) => {
         console.error("Error uploading PDF:", error);
         const customMessage = `was not possible to uploaded images`;
@@ -56,6 +59,7 @@ const useFetch = () => {
   return {
     imagesWithData,
     contextHolder,
+    isLoading,
     setFiles,
     handleClick,
   };
